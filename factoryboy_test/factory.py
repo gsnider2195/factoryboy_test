@@ -86,3 +86,20 @@ class SiteFactory(factory.Factory):
         model = Site
 
     name = factory.Sequence(lambda n: f"Site {n}")
+
+
+class SampleModel:
+    def __init__(self, company, address):
+        self.company = company
+        self.address = address
+
+    def __repr__(self):
+        return str(self.__dict__)
+
+
+class SampleFactory(factory.Factory):
+    class Meta:
+        model = SampleModel
+
+    company = factory.Faker("company")
+    address = factory.Faker("address")
